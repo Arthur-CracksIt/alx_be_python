@@ -8,3 +8,6 @@ else:
 #ternary operator version
 message = "The word is a palindrome" if word ==word[::-1] else "The word is not a palindrome"
 print(message)
+if 0 < len(message) < 15:
+    print("The message is short")
+
