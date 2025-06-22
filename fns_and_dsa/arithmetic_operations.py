@@ -9,7 +9,7 @@ def perform_operation(num1, num2, operation):
                 return num1 / num2
             elif num2 == 0:
                 print(f"{num2} cannot divide {num1}")
-                num2 = float(input("Re-enter second number"))
+                num2 = float(input("Re-enter second number: "))
                 return num1 / num2
             else: print("check numbers entered well")
             # while num2 == 0:
