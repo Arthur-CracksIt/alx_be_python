@@ -21,14 +21,30 @@ mycursor = db.cursor() #to enable you scroll over the database/ walk through you
 # update = "UPDATE Students set firstName = %s where StudentId = %s"
 # # val = ("Percy", '20750963')
 # # mycursor.execute(update, val)
-# # db.commit()
-query = "select * from Students where StudentId = %s"
-value = '20750963',
-mycursor.execute(query, value)
+# # # db.commit()
+# query = "select * from Students where StudentId = %s"
+# value = '20750963',
+# mycursor.execute(query, value)
+# result = mycursor.fetchall()
+# for i in result:
+#     print(i)
+# db.commit()
+mycursor.execute("""
+                 CREATE TABLE IF NOT EXISTS studentCourse(courseid int auto_increment primary key, studentId char(8), courseTitle varchar(50) not null) """)
+print("Table created")
+
+sql = "INSERT INTO studentCourse(courseid, studentId, courseTitle) Values(%s, %s, %s)"
+values = (2, "27531130", "CSM5023")
+mycursor.execute(sql, values)
+db.commit()
+
+print(mycursor.rowcount, "records inserted succesfully")
+
+mycursor.execute("Select * from studentCourse")
 result = mycursor.fetchall()
 for i in result:
     print(i)
-# db.commit()
+
 
 
 
