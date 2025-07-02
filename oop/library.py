@@ -17,8 +17,24 @@ mycursor = mydb.cursor()
 # mydb.commit()
 
 def searchBook():
-    query = input("Enter your search book sql query...In sql format: ")
-    mycursor.execute(query)
+    value = input("Enter book id: ")
+    query = "select * from Books where id = %s"
+    mycursor.execute(query, (value,))
     result = mycursor.fetchone()
-    print(result)
+    if result:
+        print(result)
+    else: 
+        print(f"No book found with id: {value}")
 searchBook()
+
+def listBooks():
+    query = "Select * from Books"
+    mycursor.execute(query)
+    results = mycursor.fetchall()
+    if results:
+        for result in results:
+            print(f"Books: {result}")
+    else:
+        print("No books in database")
+
+listBooks()
