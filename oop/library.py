@@ -38,3 +38,6 @@ def listBooks():
         print("No books in database")
 
 listBooks()
+mydb.commit()
+mycursor.close()
+mydb.close()
